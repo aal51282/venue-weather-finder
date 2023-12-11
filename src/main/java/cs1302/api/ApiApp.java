@@ -43,8 +43,8 @@ import javafx.scene.text.Font;
 /**
  * The {@code ApiApp} class is a JavaFX application that integrates two external RESTful JSON APIs
  * to provide users with weather information based on venue locations. The application allows users
- * to input a venue name, fetch the latitude and longitude from the first API and use this
- * information to obtain the latest weather details from the second API.
+ * to input a venue name and state code, fetch the latitude and longitude from the first API
+ * and use this information to obtain the latest weather details from the second API.
  */
 public class ApiApp extends Application {
 
