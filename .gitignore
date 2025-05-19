@@ -19,7 +19,5 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 gitreset.sh
 
-../resources/config.properties
 config.properties
-resources/
-resources
+
