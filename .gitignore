@@ -21,4 +21,5 @@ gitreset.sh
 
 ../resources/config.properties
 config.properties
+resources/
 resources
