@@ -1,7 +1,5 @@
 # Venue Weather Finder
 
-![api-app](https://github.com/user-attachments/assets/a5f63875-e164-4526-af81-313c4c4a4ac7)
-
 ## Overview
 
 Venue Weather Finder is a JavaFX application that integrates two external RESTful JSON APIs to provide users with weather information based on venue locations. The application allows users to search for venues using the venue name and state code, fetch location coordinates from the Ticketmaster API, and then retrieve real-time weather information for that location using the API Ninjas Weather API.
