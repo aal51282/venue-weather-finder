@@ -1,44 +1,33 @@
 package cs1302.api;
 
-import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.HBox;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.net.http.HttpResponse.BodyHandler;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.nio.charset.StandardCharsets;
-
-import java.io.InputStream;
-import java.io.FileInputStream;
 import java.util.Properties;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.geometry.Orientation;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import com.google.gson.annotations.SerializedName;
-
-import javafx.geometry.Orientation;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
 /**
  * The {@code ApiApp} class is a JavaFX application that integrates two external RESTful JSON APIs
@@ -173,7 +162,7 @@ public class ApiApp extends Application {
         venueSearch = new TextField();
         searchButton = new Button("Search");
 
-        // 2c. Components within the stateVenueLabel
+        // 2c. Components within stateCodeVenueHBox
         stateCodeLabel = new Label("State Code:");
         stateCodeSearch = new TextField();
 
@@ -239,7 +228,7 @@ public class ApiApp extends Application {
         // Set UI Properties
         venueSearch.setText("Georgia Theatre");
         stateCodeSearch.setText("GA");
-        text.setFont(new Font(17));
+        text.setFont(new Font(18));
         venueLabel.setFont(new Font(14));
         stateCodeLabel.setFont(new Font(14));
         venueText.setFont(new Font(17));
@@ -257,15 +246,15 @@ public class ApiApp extends Application {
         searchButton.setOnAction(event -> fetchDataFromAPI());
 
         // setup scene
-        this.scene = new Scene(root, 550, 500);
+        this.scene = new Scene(root, 650, 600);
 
         // setup stage
-        stage.setTitle("ApiApp!");
+        stage.setTitle("Venue Weather Finder");
         stage.setScene(scene);
         stage.setOnCloseRequest(event -> Platform.exit());
         stage.sizeToScene();
         stage.show();
-        this.stage.setResizable(false);
+        this.stage.setResizable(true);
     } // start
 
     /**
