@@ -121,7 +121,7 @@ public class ApiApp extends Application {
     Label humidityLabel;
     Label windSpeedLabel;
 
-    // 7. Components within the bottomHBox
+    // 7. Components within the bottomVBox
     Label bottomVenueLabel;
     Label bottomWeatherLabel;
 
@@ -137,55 +137,66 @@ public class ApiApp extends Application {
         // Components within the root
         separatorLeft = new Separator(Orientation.VERTICAL);
         rightVBox = new VBox(20);
+        rightVBox.setStyle("-fx-padding: 20px;");
 
         // Components within rightVBox
         topHBox = new HBox();
-        venueLocationVBox = new VBox(2);
+        venueLocationVBox = new VBox(10);
         venueInfoHBox = new HBox();
-        venueInfoDisplayVbox = new VBox();
+        venueInfoDisplayVbox = new VBox(5);
         weatherInfoHBox = new HBox();
-        weatherInfoDisplayVBox = new VBox();
-        bottomVBox = new VBox();
+        weatherInfoDisplayVBox = new VBox(5);
+        bottomVBox = new VBox(5);
 
         // 1. Components within the topHBox
-        text = new Label("\nWelcome to the Venue-Weather finder!\n\n" +
-        "Search for a specific venue in the search bars below, using\n" +
-        "the venue's name and state code, to get information about the\n" +
-        "venue as well as the current weather conditions of the venue.");
+        text = new Label("Welcome to the Venue-Weather Finder!\n\n" +
+        "Search for a specific venue in the search bars below, using " +
+        "the venue's name and state code, to get information about the " +
+        "venue as well as the current weather conditions at that location.");
+        text.setWrapText(true);
+        text.setStyle("-fx-font-weight: bold;");
 
         // 2. Components within the venueLocationVBox
         venueHBox = new HBox(12);
-        stateCodeVenueHBox = new HBox(1);
+        stateCodeVenueHBox = new HBox(12);
 
         // 2b. Components within the venueHBox
-        venueLabel = new Label("Venue:     ");
+        venueLabel = new Label("Venue:");
         venueSearch = new TextField();
+        venueSearch.setPrefWidth(200);
         searchButton = new Button("Search");
+        searchButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
 
         // 2c. Components within stateCodeVenueHBox
         stateCodeLabel = new Label("State Code:");
         stateCodeSearch = new TextField();
+        stateCodeSearch.setPrefWidth(50);
 
         // 3. Components within the venueInfoHBox
         venueText = new Label("Venue Information:");
+        venueText.setStyle("-fx-font-weight: bold;");
 
         // 4. Components within the venueInfoDisplayVbox
         venueName = new Label("Venue Name:");
         venueLocation = new Label("Location:");
         venueAddress = new Label("Address:");
+        venueInfoDisplayVbox.setStyle("-fx-background-color: #f0f0f0; -fx-padding: 10px; -fx-background-radius: 5px;");
 
         // 5. Components within weatherInfoHBox
         weatherText = new Label("Weather Information:");
+        weatherText.setStyle("-fx-font-weight: bold;");
 
         // 6. Components within weatherInfoDisplayVBox
         tempLabel = new Label("Temperature:");
         cloudPercentageLabel = new Label("Cloud Percentage:");
         humidityLabel = new Label("Humidity:");
         windSpeedLabel = new Label("Wind Speed:");
+        weatherInfoDisplayVBox.setStyle("-fx-background-color: #e6f7ff; -fx-padding: 10px; -fx-background-radius: 5px;");
 
         // 7. Components within the bottomVBox
         bottomVenueLabel = new Label("Venue information provided by Ticketmaster API.");
-        bottomWeatherLabel = new Label("Weather information provided by API Ninjas. ");
+        bottomWeatherLabel = new Label("Weather information provided by API Ninjas.");
+        bottomVBox.setStyle("-fx-padding: 10px 0px 0px 0px; -fx-font-style: italic; -fx-font-size: 10px;");
 
     } // ApiApp
 
@@ -228,28 +239,35 @@ public class ApiApp extends Application {
         // Set UI Properties
         venueSearch.setText("Georgia Theatre");
         stateCodeSearch.setText("GA");
-        text.setFont(new Font(18));
-        venueLabel.setFont(new Font(14));
-        stateCodeLabel.setFont(new Font(14));
-        venueText.setFont(new Font(17));
-        venueName.setFont(new Font(14));
-        venueLocation.setFont(new Font(14));
-        venueAddress.setFont(new Font(14));
-        weatherText.setFont(new Font(17));
-        tempLabel.setFont(new Font(14));
-        humidityLabel.setFont(new Font(14));
-        windSpeedLabel.setFont(new Font(14));
-        bottomVenueLabel.setFont(new Font(14));
-        bottomWeatherLabel.setFont(new Font(14));
+        
+        // Set fonts for all components
+        Font titleFont = new Font("Arial", 20);
+        Font headingFont = new Font("Arial", 16);
+        Font normalFont = new Font("Arial", 14);
+        
+        text.setFont(titleFont);
+        venueLabel.setFont(normalFont);
+        stateCodeLabel.setFont(normalFont);
+        venueText.setFont(headingFont);
+        venueName.setFont(normalFont);
+        venueLocation.setFont(normalFont);
+        venueAddress.setFont(normalFont);
+        weatherText.setFont(headingFont);
+        tempLabel.setFont(normalFont);
+        cloudPercentageLabel.setFont(normalFont);
+        humidityLabel.setFont(normalFont);
+        windSpeedLabel.setFont(normalFont);
 
         // Event handler for the "Search" button
         searchButton.setOnAction(event -> fetchDataFromAPI());
 
         // setup scene
-        this.scene = new Scene(root, 650, 600);
+        this.scene = new Scene(root, 700, 600);
+        scene.getStylesheets().add("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+        root.setStyle("-fx-font-family: 'Roboto', sans-serif;");
 
         // setup stage
-        stage.setTitle("Venue Weather Finder");
+        stage.setTitle("Venue-Weather Finder");
         stage.setScene(scene);
         stage.setOnCloseRequest(event -> Platform.exit());
         stage.sizeToScene();
